@@ -1,0 +1,24 @@
+.photo {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  background-color: white;
+}
+
+.photo:hover {
+  position: relative;
+  z-index: 2;
+  transform: scale(1.2);
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.info {
+  display: grid;
+  grid-template-areas:
+    "author like"
+    "date like";
+  justify-content: space-between;
+  align-items: center;
+}

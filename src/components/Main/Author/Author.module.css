@@ -1,0 +1,13 @@
+.author {
+  grid-area: author;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .author {
+    width: 50px;
+    height: 60px;
+    font-size: 14px;
+  }
+}
