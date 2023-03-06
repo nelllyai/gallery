@@ -6,12 +6,13 @@ import {photosRequestAsync} from '../../../store/photos/photosAction';
 import {Masonry} from '@mui/lab';
 
 export const List = () => {
+  const token = useSelector(state => state.token.token);
   const photos = useSelector(state => state.photos.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(photosRequestAsync());
-  }, []);
+  }, [token]);
 
   return (
     <Masonry columns={{xs: 2, sm: 3, md: 5}} spacing={1}>
