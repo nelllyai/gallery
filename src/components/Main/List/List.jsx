@@ -7,7 +7,6 @@ import {Masonry} from '@mui/lab';
 
 export const List = () => {
   const token = useSelector(state => state.token.token);
-  // const likes = useSelector(state => state.likes.likes);
 
   const photos = useSelector(state => state.photos.data);
   const dispatch = useDispatch();
