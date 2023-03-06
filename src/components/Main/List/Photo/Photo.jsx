@@ -22,6 +22,8 @@ export const Photo = ({photoData}) => {
     liked_by_user: liked,
   } = photoData;
 
+  console.log(id, likes);
+
   return (
     <div className={style.photo}>
       <Link to={`/photos/${id}`} className={style.image}>

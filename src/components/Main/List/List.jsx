@@ -7,6 +7,7 @@ import {Masonry} from '@mui/lab';
 
 export const List = () => {
   const token = useSelector(state => state.token.token);
+  // const likes = useSelector(state => state.likes.likes);
 
   const photos = useSelector(state => state.photos.data);
   const dispatch = useDispatch();
@@ -14,16 +15,15 @@ export const List = () => {
   const endList = useRef(null);
 
   useEffect(() => {
-    dispatch(photosRequestAsync(1));
+    dispatch(photosRequestAsync(true));
   }, [token]);
 
   useEffect(() => {
-    if (!endList.current) return;
+    if (!endList.current || !photos.length) return;
 
     const observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
-        console.log('observe');
-        // dispatch(photosRequestAsync());
+        dispatch(photosRequestAsync());
       }
     }, {
       rootMargin: '100px',
