@@ -3,22 +3,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 100px;
+}
+
+.full img {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.loading {
+  color: white;
 }
 
 .info {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  padding-top: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: white;
+  gap: 5px;
 }
 
 .description {
-  padding-top: 20px;
-  font-size: 18px;
+  margin-bottom: 10px;
   font-weight: 700;
 }
 
 .link {
-  text-decoration: underline;
-  color: dodgerblue;
+  color: darkseagreen;
 }
