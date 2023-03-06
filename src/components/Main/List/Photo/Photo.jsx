@@ -19,17 +19,18 @@ export const Photo = ({photoData}) => {
     },
     created_at: date,
     likes,
+    liked_by_user: liked,
   } = photoData;
 
   return (
     <div className={style.photo}>
-      <Link to={`/photos/${id}`}>
+      <Link to={`/photos/${id}`} className={style.image}>
         <Image source={urls.thumb} description={description} />
       </Link>
       <div className={style.info}>
         <Author name={username} link={html} />
         <Date date={date} />
-        <Likes quantity={likes} />
+        <Likes id={id} quantity={likes} pushed={liked} />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import {photosRequestAsync} from './photosAction';
 const initialState = {
   loading: false,
   data: [],
+  page: 0,
   error: {},
 };
 
@@ -14,6 +15,7 @@ export const photosSlice = createSlice({
   extraReducers: {
     [photosRequestAsync.pending.type]: state => {
       state.loading = true;
+      state.page++;
       state.error = {};
     },
     [photosRequestAsync.fulfilled.type]: (state, action) => {

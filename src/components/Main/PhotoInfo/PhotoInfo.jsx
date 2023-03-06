@@ -22,27 +22,25 @@ export const PhotoInfo = () => {
     <div className={style.full}>
       {
         !photoData.user ?
-        <p>Загрузка...</p> :
+        <p className={style.loading}>Загрузка...</p> :
         <>
           <Image
             source={photoData.urls.regular}
             description={photoData.description}
           />
-          <p className={style.description}>Информация о фотографии:</p>
-          <ul className={style.info}>
-            <li>
-              <Author
-                name={photoData.user.username}
-                link={photoData.user.links.html}
-              />
-            </li>
-            <li>
-              <Date date={photoData['created_at']} />
-            </li>
-            <li>
-              <Likes quantity={photoData.likes} />
-            </li>
-          </ul>
+          <div className={style.info}>
+            <p className={style.description}>Информация о фотографии:</p>
+            <Author
+              name={photoData.user.username}
+              link={photoData.user.links.html}
+            />
+            <Date date={photoData['created_at']} />
+            <Likes
+              id={id}
+              quantity={photoData.likes}
+              pushed={photoData['liked_by_user']}
+            />
+          </div>
         </>
       }
       <Link to='/'>
