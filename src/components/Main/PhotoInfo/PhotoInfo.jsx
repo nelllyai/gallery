@@ -7,12 +7,23 @@ import {Link, useParams} from 'react-router-dom';
 import {photoRequestAsync} from '../../../store/photo/photoAction';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
+import {ClipLoader} from 'react-spinners';
 
 export const PhotoInfo = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
 
+  const loading = useSelector(state => state.photo.loading);
   const photoData = useSelector(state => state.photo.data);
+
+  const {
+    user,
+    description,
+    urls,
+    likes,
+    created_at: date,
+    liked_by_user: liked,
+  } = photoData;
 
   useEffect(() => {
     dispatch(photoRequestAsync(id));
@@ -21,24 +32,27 @@ export const PhotoInfo = () => {
   return (
     <div className={style.full}>
       {
-        !photoData.user ?
-        <p className={style.loading}>Загрузка...</p> :
+        loading || !user ?
+        <ClipLoader
+          color={'#fff'}
+          size={250}
+        /> :
         <>
           <Image
-            source={photoData.urls.regular}
-            description={photoData.description}
+            source={urls.regular}
+            description={description}
           />
           <div className={style.info}>
             <p className={style.description}>Информация о фотографии:</p>
             <Author
-              name={photoData.user.username}
-              link={photoData.user.links.html}
+              name={user.username}
+              link={user.links.html}
             />
-            <Date date={photoData['created_at']} />
+            <Date date={date} />
             <Likes
               id={id}
-              quantity={photoData.likes}
-              pushed={photoData['liked_by_user']}
+              quantity={likes}
+              pushed={liked}
             />
           </div>
         </>
