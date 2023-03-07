@@ -3,8 +3,6 @@ import {likesPostAsync, likesDeleteAsync} from './likesAction';
 
 const initialState = {
   loading: false,
-  liked: false,
-  likes: 0,
   error: {},
 };
 

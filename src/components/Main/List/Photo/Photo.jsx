@@ -22,12 +22,17 @@ export const Photo = ({photoData}) => {
     liked_by_user: liked,
   } = photoData;
 
-  console.log(id, likes);
-
   return (
     <div className={style.photo}>
-      <Link to={`/photos/${id}`} className={style.image}>
-        <Image source={urls.thumb} description={description} />
+      <Link
+        to={`/photos/${id}`}
+        style={{width: `100%`}}
+        className={style.image}
+      >
+        <Image
+          source={urls.thumb}
+          description={description}
+        />
       </Link>
       <div className={style.info}>
         <Author name={username} link={html} />

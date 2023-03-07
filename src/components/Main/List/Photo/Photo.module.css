@@ -3,8 +3,9 @@
   flex-direction: column;
   padding: 10px;
   border-radius: 10px;
-  transition: all 0.2s;
   background-color: white;
+  transition: all 0.2s;
+  animation: pop 1.6s;
 }
 
 .photo:hover {
@@ -25,4 +26,9 @@
     "date like";
   justify-content: space-between;
   align-items: center;
+}
+
+@keyframes pop {
+  0% {transform: scale(0);}
+  100% {transform: scale(1)};
 }

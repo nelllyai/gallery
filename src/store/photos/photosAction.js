@@ -6,7 +6,8 @@ export const photosRequestAsync = createAsyncThunk(
   'photos/get',
   (start, {getState}) => {
     const token = getState().token.token;
-    const prevPhotos = getState().photos.data;
+
+    // const prevPhotos = getState().photos.data;
     let page = getState().photos.page + 1;
 
     if (start) page = 1;
@@ -20,17 +21,20 @@ export const photosRequestAsync = createAsyncThunk(
       })
       .then(({data}) => {
         data.splice(0, 6);
+        return {data, page};
 
-        if (page === 1) {
-          return {
-            data, page
-          };
-        } else {
-          return ({
-            data: [...prevPhotos, ...data],
-            page
-          });
-        }
+        // if (page === 1) {
+        //   console.log(prevPhotos);
+        //   console.log(data);
+        //   return {
+        //     data, page
+        //   };
+        // } else {
+        //   return ({
+        //     data: [...prevPhotos, ...data],
+        //     page
+        //   });
+        // }
       })
       .catch(error => Promise.reject(error));
   }
