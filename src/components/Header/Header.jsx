@@ -6,6 +6,7 @@ import {authRequestAsync} from '../../store/auth/authAction';
 import {tokenRequestAsync} from '../../store/token/tokenAction';
 import {useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Logo from './Logo';
 import Search from './Search';
 
 export const Header = ({code}) => {
@@ -31,6 +32,8 @@ export const Header = ({code}) => {
   return (
     <header className={style.header}>
       <div className={style.container}>
+        <Logo />
+        <Search />
         {
           userData.username ?
           <div className={style.profile}>
@@ -45,7 +48,6 @@ export const Header = ({code}) => {
             Войти
           </a>
         }
-        <Search />
       </div>
     </header>
   );

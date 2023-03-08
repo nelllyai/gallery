@@ -4,7 +4,7 @@ import {ACCESS_KEY, URL_API} from '../../api/const';
 
 export const photosRequestAsync = createAsyncThunk(
   'photos/get',
-  ({start, search}, {getState}) => {
+  ({start, search} = {}, {getState}) => {
     const token = getState().token.token;
 
     const prevPhotos = getState().photos.data;
@@ -16,6 +16,7 @@ export const photosRequestAsync = createAsyncThunk(
       page = 1;
       currentSearch = search;
     }
+    if (start && !search) currentSearch = '';
 
     return axios(
       `${URL_API}/${currentSearch ? `search/` : ''}` +

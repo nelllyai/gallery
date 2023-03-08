@@ -10,6 +10,7 @@ export const Search = () => {
   const handlerSubmit = event => {
     event.preventDefault();
     dispatch(photosRequestAsync({search}));
+    setSearch('');
   };
 
   return (

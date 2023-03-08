@@ -5,21 +5,29 @@ import {useEffect} from 'react';
 import {photosRequestAsync} from '../../../store/photos/photosAction';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry';
+import {useLocation} from 'react-router-dom';
 
 export const List = () => {
+  const location = useLocation();
   const token = useSelector(state => state.token.token);
 
   const photos = useSelector(state => state.photos.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(photosRequestAsync({start: true}));
+    window.scrollTo(0, 0);
+    dispatch(photosRequestAsync({start: true, search: ''}));
+  }, [location.pathname]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(photosRequestAsync({start: true, search: ''}));
   }, [token]);
 
   return (
     <InfiniteScroll
       dataLength={photos.length}
-      next={() => dispatch(photosRequestAsync({}))}
+      next={() => dispatch(photosRequestAsync())}
       hasMore={true}
     >
       <ResponsiveMasonry
