@@ -3,6 +3,7 @@ import {photosRequestAsync} from './photosAction';
 
 const initialState = {
   data: [],
+  search: '',
   page: 0,
   error: {},
 };
@@ -17,6 +18,7 @@ export const photosSlice = createSlice({
     },
     [photosRequestAsync.fulfilled.type]: (state, action) => {
       state.data = action.payload.data;
+      state.search = action.payload.search;
       state.page = action.payload.page;
       state.error = {};
     },

@@ -2,16 +2,18 @@
   position: fixed;
   z-index: 3;
   width: 100vw;
-  height: 50px;
+  height: 90px;
   background-color: darkslategrey;
   color: white;
 }
 
 .container {
   display: flex;
+  flex-wrap: wrap;;
+  justify-content: space-around;
   align-items: center;
   max-width: 1420px;
-  padding: 0 15px;
+  padding: 5px 15px;
   margin: 0 auto;
   height: 100%;
 }
@@ -22,8 +24,17 @@
   gap: 10px;
 }
 
+.image {
+  border-radius: 50%;
+}
+
 @media (min-width: 768px) {
+  .header {
+    height: 50px;
+  }
+
   .container {
+    justify-content: space-between;
     padding: 0 30px;
   }
 }

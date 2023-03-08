@@ -1,3 +1,4 @@
+import style from './List.module.css';
 import Photo from './Photo';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
@@ -12,17 +13,18 @@ export const List = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(photosRequestAsync(true));
+    dispatch(photosRequestAsync({start: true}));
   }, [token]);
 
   return (
     <InfiniteScroll
       dataLength={photos.length}
-      next={() => dispatch(photosRequestAsync())}
+      next={() => dispatch(photosRequestAsync({}))}
       hasMore={true}
     >
       <ResponsiveMasonry
         columnsCountBreakPoints={{320: 1, 480: 2, 768: 3, 1024: 4, 1366: 5}}
+        className={style.list}
       >
         <Masonry gutter={'20px'}>
           {

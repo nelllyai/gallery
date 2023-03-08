@@ -1,11 +1,5 @@
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 20px;
+  padding: 50px 30px;
+  gap: 10px;
   overflow: hidden;
-}
-
-.end {
-  flex-basis: 100%;
 }

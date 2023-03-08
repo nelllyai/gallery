@@ -6,6 +6,7 @@ import {authRequestAsync} from '../../store/auth/authAction';
 import {tokenRequestAsync} from '../../store/token/tokenAction';
 import {useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Search from './Search';
 
 export const Header = ({code}) => {
   const token = useSelector(state => state.token.token);
@@ -33,13 +34,18 @@ export const Header = ({code}) => {
         {
           userData.username ?
           <div className={style.profile}>
-            <img src={userData['profile_image'].small} alt='Аватарка' />
+            <img
+              src={userData['profile_image'].small}
+              alt='Аватарка'
+              className={style.image}
+            />
             <p>{userData.username}</p>
           </div> :
           <a href={urlAuth}>
             Войти
           </a>
         }
+        <Search />
       </div>
     </header>
   );
