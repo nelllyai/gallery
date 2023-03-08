@@ -5,10 +5,9 @@ import {useEffect} from 'react';
 import {photosRequestAsync} from '../../../store/photos/photosAction';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry';
-import {Outlet, useLocation} from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 
 export const List = () => {
-  const location = useLocation();
   const token = useSelector(state => state.token.token);
 
   const photos = useSelector(state => state.photos.data);
@@ -17,10 +16,6 @@ export const List = () => {
   useEffect(() => {
     dispatch(photosRequestAsync({start: true, search: ''}));
   }, [token]);
-
-  useEffect(() => {
-    dispatch(photosRequestAsync({start: true, search: ''}));
-  }, [location.pathname]);
 
   return (
     <>

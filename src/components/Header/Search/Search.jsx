@@ -2,13 +2,16 @@ import style from './Search.module.css';
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {photosRequestAsync} from '../../../store/photos/photosAction';
+import {useNavigate} from 'react-router-dom';
 
 export const Search = () => {
   const [search, setSearch] = useState('');
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const handlerSubmit = event => {
     event.preventDefault();
+    navigate('/');
     dispatch(photosRequestAsync({search}));
     setSearch('');
   };
