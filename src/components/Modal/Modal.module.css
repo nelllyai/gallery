@@ -1,0 +1,58 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  background-color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 15px;
+  inset: 5%;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.title {
+  margin-bottom: 30px;
+  padding-right: 50px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  width: 15px;
+  height: 15px;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    padding: 30px;
+    inset: 10%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal {
+    padding: 50px;
+    inset: 15%;
+  }
+}

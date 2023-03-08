@@ -1,5 +1,6 @@
 .form {
   position: relative;
+  order: 3;
   width: 100%;
 }
 
@@ -44,6 +45,7 @@
 
 @media (min-width: 768px) {
   .form {
+    order: 1;
     width: 500px;
   }
 

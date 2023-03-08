@@ -5,7 +5,7 @@ import {useEffect} from 'react';
 import {photosRequestAsync} from '../../../store/photos/photosAction';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry';
-import {useLocation} from 'react-router-dom';
+import {Outlet, useLocation} from 'react-router-dom';
 
 export const List = () => {
   const location = useLocation();
@@ -15,33 +15,34 @@ export const List = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    dispatch(photosRequestAsync({start: true, search: ''}));
-  }, [location.pathname]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
     dispatch(photosRequestAsync({start: true, search: ''}));
   }, [token]);
 
+  useEffect(() => {
+    dispatch(photosRequestAsync({start: true, search: ''}));
+  }, [location.pathname]);
+
   return (
-    <InfiniteScroll
-      dataLength={photos.length}
-      next={() => dispatch(photosRequestAsync())}
-      hasMore={true}
-    >
-      <ResponsiveMasonry
-        columnsCountBreakPoints={{320: 1, 480: 2, 768: 3, 1024: 4, 1366: 5}}
-        className={style.list}
+    <>
+      <InfiniteScroll
+        dataLength={photos.length}
+        next={() => dispatch(photosRequestAsync())}
+        hasMore={true}
       >
-        <Masonry gutter={'20px'}>
-          {
-            photos.map(photo => (
-              <Photo key={photo.id} photoData={photo} />
-            ))
-          }
-        </Masonry>
-      </ResponsiveMasonry>
-    </InfiniteScroll>
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{320: 1, 480: 2, 768: 3, 1024: 4, 1366: 5}}
+          className={style.list}
+        >
+          <Masonry gutter={'20px'}>
+            {
+              photos.map(photo => (
+                <Photo key={photo.id} photoData={photo} />
+              ))
+            }
+          </Masonry>
+        </ResponsiveMasonry>
+      </InfiniteScroll>
+      <Outlet />
+    </>
   );
 };

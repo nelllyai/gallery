@@ -1,0 +1,11 @@
+.link {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: tomato;
+}

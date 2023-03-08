@@ -1,13 +1,13 @@
 import style from './Header.module.css';
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {urlAuth} from '../../api/auth';
 import {authRequestAsync} from '../../store/auth/authAction';
 import {tokenRequestAsync} from '../../store/token/tokenAction';
 import {useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Logo from './Logo';
 import Search from './Search';
+import Auth from './Auth';
 
 export const Header = ({code}) => {
   const token = useSelector(state => state.token.token);
@@ -34,20 +34,7 @@ export const Header = ({code}) => {
       <div className={style.container}>
         <Logo />
         <Search />
-        {
-          userData.username ?
-          <div className={style.profile}>
-            <img
-              src={userData['profile_image'].small}
-              alt='Аватарка'
-              className={style.image}
-            />
-            <p>{userData.username}</p>
-          </div> :
-          <a href={urlAuth}>
-            Войти
-          </a>
-        }
+        <Auth user={userData} />
       </div>
     </header>
   );
