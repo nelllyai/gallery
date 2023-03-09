@@ -9,7 +9,11 @@ const initialState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    clearAuth: state => {
+      state.data = {};
+    },
+  },
   extraReducers: {
     [authRequestAsync.pending.type]: state => {
       state.error = {};

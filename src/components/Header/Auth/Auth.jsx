@@ -2,6 +2,7 @@ import {urlAuth} from '../../../api/auth';
 import style from './Auth.module.css';
 import PropTypes from 'prop-types';
 import Favourites from './Favourites';
+import LogOut from './LogOut';
 
 export const Auth = ({user}) => (
   <div className={style.profile}>
@@ -15,6 +16,7 @@ export const Auth = ({user}) => (
         />
         <p>{user.username}</p>
         <Favourites />
+        <LogOut />
       </> :
       <a href={urlAuth}>
         Войти

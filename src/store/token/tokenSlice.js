@@ -9,7 +9,12 @@ const initialState = {
 export const tokenSlice = createSlice({
   name: 'token',
   initialState,
-  reducers: {},
+  reducers: {
+    tokenDelete: state => {
+      state.token = '';
+      state.error = {};
+    }
+  },
   extraReducers: {
     [tokenRequestAsync.pending.type]: state => {
       state.error = {};
