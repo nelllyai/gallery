@@ -8,9 +8,12 @@ import PropTypes from 'prop-types';
 import Logo from './Logo';
 import Search from './Search';
 import Auth from './Auth';
+import {getToken} from '../../utils/tokenStorage';
 
 export const Header = ({code}) => {
-  const token = useSelector(state => state.token.token);
+  const storageToken = getToken();
+
+  const token = useSelector(state => state.token.token) || storageToken;
   const userData = useSelector(state => state.auth.data);
 
   const dispatch = useDispatch();
@@ -25,7 +28,7 @@ export const Header = ({code}) => {
 
   useEffect(() => {
     if (token) {
-      dispatch(authRequestAsync());
+      dispatch(authRequestAsync(token));
     }
   }, [token]);
 

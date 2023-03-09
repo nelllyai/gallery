@@ -3,6 +3,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {urlToken} from '../../api/auth';
 import {ACCESS_KEY} from '../../api/const';
+import {setToken} from '../../utils/tokenStorage';
 
 export const tokenRequestAsync = createAsyncThunk(
   'token/set',
@@ -14,9 +15,12 @@ export const tokenRequestAsync = createAsyncThunk(
           Authorization: `Client-ID ${ACCESS_KEY}`,
         },
       })
-      .then(({data}) => ({
-        token: data['access_token'],
-      }))
+      .then(({data}) => {
+        const token = data['access_token'];
+        setToken(token);
+
+        return {token};
+      })
       .catch(error => Promise.reject(error));
   }
 );

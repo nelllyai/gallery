@@ -1,11 +1,12 @@
+/* eslint-disable arrow-body-style */
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {URL_API} from '../../api/const';
 
 export const authRequestAsync = createAsyncThunk(
   'auth/get',
-  (args, {getState}) => {
-    const token = getState().token.token;
+  (token, {getState}) => {
+    // const token = getState().token.token;
 
     return axios(
       `${URL_API}/me`,

@@ -14,7 +14,6 @@ export const List = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(token);
     dispatch(photosRequestAsync({start: true, search: ''}));
   }, [token]);
 
