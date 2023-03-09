@@ -10,6 +10,10 @@ export const tokenSlice = createSlice({
   name: 'token',
   initialState,
   reducers: {
+    tokenSet: (state, action) => {
+      state.token = action.payload.token;
+      state.error = {};
+    },
     tokenDelete: state => {
       state.token = '';
       state.error = {};
